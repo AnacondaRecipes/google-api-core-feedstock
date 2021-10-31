@@ -1,6 +1,6 @@
 {% set name = "google-api-core" %}
-{% set version = "1.20.0" %}
-{% set sha256 = "eec2c302b50e6db0c713fb84b71b8d75cfad5dc6d4dffc78e9f69ba0008f5ede" %}
+{% set version = "2.2.1" %}
+{% set sha256 = "31eea0ec01ac0e3905c1dd752afbae487a2092c36f138cdccda644666caf307d" %}
 
 package:
   name: {{ name|lower }}-split

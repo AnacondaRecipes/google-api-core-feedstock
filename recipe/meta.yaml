@@ -61,6 +61,7 @@ outputs:
       run:
         - {{ pin_subpackage(name, exact=True) }}
         - grpcio >=1.33.2,<2.0dev
+        - grpcio-status >=1.33.2,<2.0dev
     test:
       requires:
         - pip

@@ -3,7 +3,7 @@
 {% set sha256 = "e16c15a11789bc5a3457afb2818a3540a03f341e6e710d7f9bbf6cde2ef4a7c8" %}
 
 package:
-  name: {{ name|lower }}-split
+  name: {{ name }}
   version: {{ version }}
 
 source:
@@ -18,7 +18,6 @@ build:
 outputs:
   - name: {{ name }}
     build:
-      noarch: python
       script: python -m pip install . -vv --no-deps
     requirements:
       host:
@@ -35,7 +34,7 @@ outputs:
       run_constrained:
         - grpcio >=1.33.2,<2.0dev
         - grpcio-status >=1.33.2,<2.0dev
-        - grpcio-gcp >= 0.2.2,<1.0dev
+        - grpcio-gcp >=0.2.2,<1.0dev
     test:
       requires:
         - pip
@@ -65,6 +64,8 @@ outputs:
       # noarch: generic
       skip: true  # [s390x]
     requirements:
+      host:
+        - python
       run:
         - python
         - {{ pin_subpackage(name, exact=True) }}
@@ -76,7 +77,7 @@ outputs:
       imports:
         - google.api_core
       commands:
-        - python -m pip check
+        - pip check
     about:
       home: https://github.com/googleapis/python-api-core
       license: Apache-2.0
@@ -88,6 +89,8 @@ outputs:
       # noarch: generic
       skip: true  # [s390x]
     requirements:
+      host:
+        - python
       run:
         - python
         - {{ pin_subpackage(name, exact=True) }}
@@ -99,7 +102,7 @@ outputs:
         - google.api_core
         - grpc
       commands:
-        - python -m pip check
+        - pip check
     about:
       home: https://github.com/googleapis/python-api-core
       license: Apache-2.0
@@ -111,6 +114,8 @@ outputs:
       # noarch: generic
       skip: true  # [s390x]
     requirements:
+      host:
+        - python
       run:
         - python
         - {{ pin_subpackage(name + '-grpcio-gcp', exact=True) }}
@@ -122,7 +127,7 @@ outputs:
         - grpc
         - grpc_gcp
       commands:
-        - python -m pip check
+        - pip check
     about:
       home: https://github.com/googleapis/python-api-core
       license: Apache-2.0

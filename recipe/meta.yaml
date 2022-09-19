@@ -62,7 +62,6 @@ outputs:
   - name: {{ name }}-grpc
     build:
       # noarch: generic
-      skip: true  # [s390x]
     requirements:
       host:
         - python
@@ -87,7 +86,6 @@ outputs:
   - name: {{ name }}-grpcio-gcp
     build:
       # noarch: generic
-      skip: true  # [s390x]
     requirements:
       host:
         - python
@@ -112,7 +110,6 @@ outputs:
   - name: {{ name }}-grpcgcp
     build:
       # noarch: generic
-      skip: true  # [s390x]
     requirements:
       host:
         - python

@@ -62,9 +62,11 @@ outputs:
 
   - name: {{ name }}-grpc
     build:
-      noarch: generic
+      # noarch: generic
+      skip: true  # [s390x]
     requirements:
       run:
+        - python
         - {{ pin_subpackage(name, exact=True) }}
         - grpcio >=1.33.2,<2.0dev
         - grpcio-status >=1.33.2,<2.0dev
@@ -83,9 +85,11 @@ outputs:
 
   - name: {{ name }}-grpcio-gcp
     build:
-      noarch: generic
+      # noarch: generic
+      skip: true  # [s390x]
     requirements:
       run:
+        - python
         - {{ pin_subpackage(name, exact=True) }}
         - grpcio-gcp >=0.2.2,<1.0dev
     test:
@@ -104,9 +108,11 @@ outputs:
 
   - name: {{ name }}-grpcgcp
     build:
-      noarch: generic
+      # noarch: generic
+      skip: true  # [s390x]
     requirements:
       run:
+        - python
         - {{ pin_subpackage(name + '-grpcio-gcp', exact=True) }}
     test:
       requires:

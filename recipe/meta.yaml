@@ -16,7 +16,8 @@ build:
 
 outputs:
   - name: {{ name }}
-    script: python -m pip install . -vv --no-deps --no-build-isolation
+    build:
+      script: python -m pip install . -vv --no-deps --no-build-isolation
     requirements:
       host:
         - python

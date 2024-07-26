@@ -1,4 +1,0 @@
-channels:
-  - https://staging.continuum.io/prefect/fs/proto-plus-feedstock/pr15/facd425
-  - https://staging.continuum.io/prefect/fs/grpcio-status-feedstock/pr1/09446f6
-  - https://staging.continuum.io/prefect/fs/grpcio-gcp-feedstock/pr2/94b775d

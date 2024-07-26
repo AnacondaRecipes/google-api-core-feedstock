@@ -17,7 +17,7 @@ build:
 outputs:
   - name: {{ name }}
     script: build_base.sh  # [unix]
-    script: build_base.bat  # [win]
+    script: bld_base.bat  # [win]
     requirements:
       host:
         - python

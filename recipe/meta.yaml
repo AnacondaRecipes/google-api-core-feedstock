@@ -63,8 +63,6 @@ outputs:
         - pip check
 
   - name: {{ name }}-grpc
-    build:
-      skip: True  # [py>312]
     requirements:
       host:
         - python
@@ -90,7 +88,8 @@ outputs:
 
   - name: {{ name }}-grpcio-gcp
     build:
-      # grpc-gcp-python hasn't been updated in 7+ years. 
+      # Support for grpcio-gcp is deprecated ast of January 1, 2024
+      # https://github.com/googleapis/python-api-core/blob/42e8b6e6f426cab749b34906529e8aaf3f133d75/google/api_core/grpc_helpers.py#L39-L45
       skip: true
     requirements:
       host:

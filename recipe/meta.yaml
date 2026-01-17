@@ -1,5 +1,5 @@
 {% set name = "google-api-core" %}
-{% set version = "2.26.0" %}
+{% set version = "2.29.0" %}
 
 package:
   name: {{ name }}-split
@@ -7,11 +7,11 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace("-", "_") }}-{{ version }}.tar.gz
-  sha256: e6e6d78bd6cf757f4aee41dcc85b07f485fbb069d5daa3afb126defba1e91a62
+  sha256: 84181be0f8e6b04006df75ddfe728f24489f0af57c96a529ff7cf45bc28797f7
 
 build:
   number: 0
-  skip: True  # [py<37]
+  skip: true  # [py<37]
 
 outputs:
   - name: {{ name }}
@@ -61,7 +61,6 @@ outputs:
         - google.api_core.timeout
       commands:
         - pip check
-
   - name: {{ name }}-grpc
     requirements:
       host:
@@ -69,10 +68,10 @@ outputs:
       run:
         - python
         - {{ pin_subpackage(name, exact=True) }}
-        - grpcio >=1.33.2,<2.0dev0 # [py<311]
-        - grpcio >=1.49.1,<2.0dev0 # [py>=311]
-        - grpcio-status >=1.33.2,<2.0dev0 # [py<311]
-        - grpcio-status >=1.49.1,<2.0dev0 # [py>=311]
+        - grpcio >=1.33.2,<2.0dev0  # [py<311]
+        - grpcio >=1.49.1,<2.0dev0  # [py>=311]
+        - grpcio-status >=1.33.2,<2.0dev0  # [py<311]
+        - grpcio-status >=1.49.1,<2.0dev0  # [py>=311]
     test:
       requires:
         - pip
@@ -85,7 +84,6 @@ outputs:
       license: Apache-2.0
       license_family: APACHE
       summary: Core Library for Google Client Libraries with grpc
-
   - name: {{ name }}-grpcio-gcp
     build:
       # Support for grpcio-gcp is deprecated ast of January 1, 2024
@@ -113,7 +111,6 @@ outputs:
       license: Apache-2.0
       license_family: APACHE
       summary: Core Library for Google Client Libraries with grpcio-gcp
-
   - name: {{ name }}-grpcgcp
     build:
       skip: true

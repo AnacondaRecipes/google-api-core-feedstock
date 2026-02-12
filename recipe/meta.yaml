@@ -1,5 +1,5 @@
 {% set name = "google-api-core" %}
-{% set version = "2.26.0" %}
+{% set version = "2.29.0" %}
 
 package:
   name: {{ name }}-split
@@ -7,11 +7,11 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace("-", "_") }}-{{ version }}.tar.gz
-  sha256: e6e6d78bd6cf757f4aee41dcc85b07f485fbb069d5daa3afb126defba1e91a62
+  sha256: 84181be0f8e6b04006df75ddfe728f24489f0af57c96a529ff7cf45bc28797f7
 
 build:
   number: 0
-  skip: True  # [py<37]
+  skip: true  # [py<37]
 
 outputs:
   - name: {{ name }}
@@ -32,10 +32,12 @@ outputs:
         - google-auth >=2.14.1,<3.0.0
         - requests >=2.18.0,<3.0.0
       run_constrained:
-        - grpcio >=1.33.2,<2.0dev  # [py<311]
-        - grpcio >=1.49.1,<2.0dev  # [py>=311]
+        - grpcio >=1.33.2,<2.0  # [py<311]
+        - grpcio >=1.49.1,<2.0  # [py>=311 and py<314]
+        - grpcio >=1.75.1,<2.0  # [py>=314]
         - grpcio-status >=1.33.2,<2.0.0  # [py<311]
-        - grpcio-status >=1.49.1,<2.0.0  # [py>=311]
+        - grpcio-status >=1.49.1,<2.0.0  # [py>=311 and py<314]
+        - grpcio-status >=1.75.1,<2.0.0  # [py>=314]
         - grpcio-gcp >=0.2.2,<1.0.0
         - aiohttp >=3.6.2,<4.0.0.dev0
     test:
@@ -69,10 +71,12 @@ outputs:
       run:
         - python
         - {{ pin_subpackage(name, exact=True) }}
-        - grpcio >=1.33.2,<2.0dev0 # [py<311]
-        - grpcio >=1.49.1,<2.0dev0 # [py>=311]
-        - grpcio-status >=1.33.2,<2.0dev0 # [py<311]
-        - grpcio-status >=1.49.1,<2.0dev0 # [py>=311]
+        - grpcio >=1.33.2,<2.0  # [py<311]
+        - grpcio >=1.49.1,<2.0  # [py>=311 and py<314]
+        - grpcio >=1.75.1,<2.0  # [py>=314]
+        - grpcio-status >=1.33.2,<2.0.0  # [py<311]
+        - grpcio-status >=1.49.1,<2.0.0  # [py>=311 and py<314]
+        - grpcio-status >=1.75.1,<2.0.0  # [py>=314]
     test:
       requires:
         - pip
@@ -80,63 +84,12 @@ outputs:
         - google.api_core
       commands:
         - pip check
+
     about:
       home: https://github.com/googleapis/python-api-core
       license: Apache-2.0
       license_family: APACHE
       summary: Core Library for Google Client Libraries with grpc
-
-  - name: {{ name }}-grpcio-gcp
-    build:
-      # Support for grpcio-gcp is deprecated ast of January 1, 2024
-      # https://github.com/googleapis/python-api-core/blob/42e8b6e6f426cab749b34906529e8aaf3f133d75/google/api_core/grpc_helpers.py#L39-L45
-      skip: true
-    requirements:
-      host:
-        - python
-      run:
-        - python
-        - {{ pin_subpackage(name, exact=True) }}
-        - grpcio-gcp >=0.2.2,<1.0dev0
-      run_constrained:
-        - protobuf >=3.6.1,<3.21
-    test:
-      requires:
-        - pip
-      imports:
-        - google.api_core
-        - grpc
-      commands:
-        - pip check
-    about:
-      home: https://github.com/googleapis/python-api-core
-      license: Apache-2.0
-      license_family: APACHE
-      summary: Core Library for Google Client Libraries with grpcio-gcp
-
-  - name: {{ name }}-grpcgcp
-    build:
-      skip: true
-    requirements:
-      host:
-        - python
-      run:
-        - python
-        - {{ pin_subpackage(name + '-grpcio-gcp', exact=True) }}
-    test:
-      requires:
-        - pip
-      imports:
-        - google.api_core
-        - grpc
-        - grpc_gcp
-      commands:
-        - pip check
-    about:
-      home: https://github.com/googleapis/python-api-core
-      license: Apache-2.0
-      license_family: APACHE
-      summary: Core Library for Google Client Libraries with grpcio-gcp
 
 about:
   home: https://github.com/googleapis/python-api-core

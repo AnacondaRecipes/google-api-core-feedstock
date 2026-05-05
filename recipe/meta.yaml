@@ -1,5 +1,5 @@
 {% set name = "google-api-core" %}
-{% set version = "2.29.0" %}
+{% set version = "2.30.3" %}
 
 package:
   name: {{ name }}-split
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace("-", "_") }}-{{ version }}.tar.gz
-  sha256: 84181be0f8e6b04006df75ddfe728f24489f0af57c96a529ff7cf45bc28797f7
+  sha256: e601a37f148585319b26db36e219df68c5d07b6382cff2d580e83404e44d641b
 
 build:
   number: 0
@@ -63,7 +63,6 @@ outputs:
         - google.api_core.timeout
       commands:
         - pip check
-
   - name: {{ name }}-grpc
     requirements:
       host:
@@ -84,7 +83,6 @@ outputs:
         - google.api_core
       commands:
         - pip check
-
     about:
       home: https://github.com/googleapis/python-api-core
       license: Apache-2.0

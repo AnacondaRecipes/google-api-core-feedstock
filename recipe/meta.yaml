@@ -1,5 +1,5 @@
 {% set name = "google-api-core" %}
-{% set version = "2.42.0" %}
+{% set version = "2.43.0" %}
 
 package:
   name: {{ name }}-split
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace("-", "_") }}-{{ version }}.tar.gz
-  sha256: 82cf5daa2ef1b456d4e29ff1de1a5c2995c7be3ccf4fc608184326e03390c1ee
+  sha256: d67355a22d995a009b6c5ca98744ea35fbf4f9c2c006aa0588c0941d1ceb5216
 
 build:
   number: 0
